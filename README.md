@@ -609,3 +609,36 @@ interface ImportMeta {
 <style lang="scss"></style>
 ```
 
+### 2.10 封装图标组件
+
+AppIcon组件：/src/components/common/AppIcon.vue
+
+```vue
+
+<template>
+  <span class="iconify" :data-icon="props.icon"></span>
+</template>
+
+<script lang="ts" setup="setup">
+const props = defineProps<{
+  icon: string;
+}>();
+</script>
+
+<style lang="scss" scoped></style>
+```
+
+使用：
+
+```vue
+<template>
+  <app-icon icon="flat-color-icons:search" />
+</template>
+
+<script setup lang="ts">
+  import AppIcon from '@/components/common/AppIcon.vue';
+</script>
+
+<style lang="scss"></style>
+```
+
