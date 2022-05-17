@@ -5,10 +5,7 @@
 创建项目：
 
 ```bash
-yarn create vite
-# 项目名：blog-admin
-# 框架：Vue
-# 环境：TypeScirpt
+yarn create vite blog-admin --template vue-ts
 ```
 
 安装依赖：
@@ -25,7 +22,7 @@ yarn dev
 
 ## 二、项目配置
 
-### 2.1 约束代码风格
+### 2.1 代码约束
 
 #### Eslint+Prettier
 
@@ -210,7 +207,7 @@ node_modules
 dist
 ```
 
-### 2.2 配置引用别名
+### 2.2 别名引用
 
 安装依赖：
 
@@ -276,3 +273,59 @@ IDE支持：tsconfig.json
   ]
 }
 ```
+
+### 2.3 全局样式
+
+安装依赖：
+
+```bash
+yarn add sass -D 
+```
+
+新增全局样式文件：./src/styles/vars.scss
+
+```scss
+$primaryColor: #316C72
+```
+
+配置文件：
+
+```bash
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import * as path from "path";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  // ...
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/vars.scss";`,
+      },
+    },
+  },
+});
+```
+
+使用：./src/App.vue
+
+```vue
+<script setup lang="ts"></script>
+
+<template>
+  <button class="btn">Click!</button>
+</template>
+
+<style lang="scss">
+#app {
+  background-color: $primaryColor;
+  height: 100vh;
+  .btn {
+    color: #42b983;
+  }
+}
+</style>
+```
+
+
