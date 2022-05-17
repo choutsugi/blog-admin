@@ -1,43 +1,3 @@
-# blog-admin
-
-## 一、创建项目
-
-创建项目：
-
-```bash
-yarn create vite
-# 项目名：blog-admin
-# 框架：Vue
-# 环境：TypeScirpt
-```
-
-安装依赖：
-
-```yarn
-yarn
-```
-
- 运行：
-
-```bash
-yarn dev
-```
-
-## 二、项目配置
-
-### 2.1 约束代码风格
-
-#### Eslint+Prettier
-
-安装依赖：
-
-```bash
-yarn add prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue vue-eslint-parser @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
-```
-
-配置文件：.eslintrc.json
-
-```json
 {
   "root": true,
   "env": {
@@ -119,7 +79,7 @@ yarn add prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-pl
     "no-else-return": "warn",
     // 禁止空函数
     "no-empty-function": "warn",
-    // 禁用不必要的嵌套块
+    // 禁用不必要嵌套块
     "no-lone-blocks": "warn",
     // 禁止多个空格
     "no-multi-spaces": "warn",
@@ -147,7 +107,7 @@ yarn add prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-pl
     "brace-style": "warn",
     // 强制使用骆驼拼写法命名约定
     "camelcase": "warn",
-    // 强制使用一致的缩进
+    // 强制使用一致缩进
     "indent": "off",
     // 禁止 if 作为唯一的语句出现在 else 语句中
     "no-lonely-if": "warn",
@@ -159,55 +119,3 @@ yarn add prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-pl
     "semi": ["error", "always"]
   }
 }
-```
-
-配置文件：.editorconfig
-
-```
-root = true
-
-[*]
-charset = utf-8
-# end_of_line = lf
-indent_size = 2
-indent_style = space
-insert_final_newline = true
-ij_html_quote_style = double
-max_line_length = 120
-tab_width = 2
-trim_trailing_whitespace = true
-```
-
-配置文件：.prettierrc.json
-
-```json
-{
-  "printWidth": 100,
-  "tabWidth": 2,
-  "useTabs": false,
-  "semi": true,
-  "vueIndentScriptAndStyle": true,
-  "singleQuote": true,
-  "quoteProps": "as-needed",
-  "bracketSpacing": true,
-  "trailingComma": "es5",
-  "jsxBracketSameLine": true,
-  "jsxSingleQuote": false,
-  "arrowParens": "always",
-  "insertPragma": false,
-  "requirePragma": false,
-  "proseWrap": "never",
-  "htmlWhitespaceSensitivity": "ignore",
-  "endOfLine": "auto",
-  "rangeStart": 0
-}
-```
-
-配置文件：.prettierignore
-
-```
-node_modules
-dist
-```
-
-
