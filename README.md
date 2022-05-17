@@ -328,4 +328,112 @@ export default defineConfig({
 </style>
 ```
 
+### 2.4 原子样式
+
+#### unocss
+
+安装依赖：
+
+```bash
+yarn add unocss -D
+```
+
+配置：vite.config.ts
+
+```typescript
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import * as path from "path";
+
+import Unocss from "@unocss/vite";
+import { presetUno, presetAttributify, presetIcons } from "unocss";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    Unocss({
+      presets: [presetUno(), presetAttributify(), presetIcons()],
+    }),
+  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/vars.scss";`,
+      },
+    },
+  },
+});
+```
+
+引入：./src/main.ts
+
+```typescript
+import { createApp } from 'vue';
+import App from '@/App.vue';
+
+import 'uno.css';
+
+createApp(App).mount('#app');
+```
+
+#### tailwindcss
+
+文档：https://tailwindcss.com/docs/guides/vite
+
+安装依赖：
+
+```bash
+yarn add sass
+yarn add -D tailwindcss postcss autoprefixer
+```
+
+初始化：
+
+```bash
+yarn tailwindcss init -p
+```
+
+修改配置：tailwind.config.js
+
+```js
+module.exports = {
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  darkMode: false,
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+配置css：/src/styles/index.scss
+
+```scss
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+引入：./src/main.ts
+
+```typescript
+import { createApp } from 'vue';
+import App from '@/App.vue';
+
+import '@/styles/index.scss';
+import 'uno.css';
+
+createApp(App).mount('#app');
+```
+
+### 
 

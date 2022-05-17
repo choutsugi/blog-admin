@@ -1,6 +1,7 @@
-import { createApp } from "vue";
-import App from "@/App.vue";
+import { createApp } from 'vue';
+import App from '@/App.vue';
 
-import "unocss";
+import '@/styles/index.scss';
+import 'uno.css';
 
-createApp(App).mount("#app");
+createApp(App).mount('#app');
