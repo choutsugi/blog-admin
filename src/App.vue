@@ -1,11 +1,11 @@
 <template>
   <provider>
-    <app-icon icon="flat-color-icons:search" />
+    <icon icon="flat-color-icons:search" />
   </provider>
 </template>
 
 <script setup lang="ts">
-  import AppIcon from '@/components/common/AppIcon.vue';
+  import Icon from '@/components/common/Icon.vue';
   import Provider from '@/components/common/Provider.vue';
 </script>
 

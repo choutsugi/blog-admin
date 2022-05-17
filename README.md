@@ -636,7 +636,7 @@ const props = defineProps<{
 </template>
 
 <script setup lang="ts">
-  import AppIcon from '@/components/common/AppIcon.vue';
+  import AppIcon from '@/components/common/Icon.vue';
 </script>
 
 <style lang="scss"></style>
@@ -716,7 +716,7 @@ declare global {
 </template>
 
 <script setup lang="ts">
-  import AppIcon from '@/components/common/AppIcon.vue';
+  import AppIcon from '@/components/common/Icon.vue';
   import NaiveProvider from '@/components/common/Provider.vue';
 </script>
 
