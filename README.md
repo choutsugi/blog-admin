@@ -277,7 +277,7 @@ IDE支持：tsconfig.json
 安装依赖：
 
 ```bash
-yarn add sass -D 
+yarn add sass -D
 ```
 
 新增全局样式文件：./src/styles/vars.scss
@@ -637,6 +637,87 @@ const props = defineProps<{
 
 <script setup lang="ts">
   import AppIcon from '@/components/common/AppIcon.vue';
+</script>
+
+<style lang="scss"></style>
+```
+
+### 2.11 封装NaiveProvider组件
+
+用于将naive的方法挂载到window。
+
+NaiveProvider组件：/src/components/common/NaiveProvider.vue
+
+```vue
+<template>
+  <n-loading-bar-provider>
+    <n-dialog-provider>
+      <n-notification-provider>
+        <n-message-provider>
+          <slot></slot>
+          <naive-provider-content />
+        </n-message-provider>
+      </n-notification-provider>
+    </n-dialog-provider>
+  </n-loading-bar-provider>
+</template>
+
+<script lang="ts" setup>
+  import { defineComponent, h } from 'vue';
+  import { useDialog, useLoadingBar, useMessage, useNotification } from 'naive-ui';
+
+  // 挂载naive组件的方法至window, 以便在路由钩子函数和请求函数里面调用
+  const registerNaiveTools = () => {
+    window.$loading = useLoadingBar();
+    window.$dialog = useDialog();
+    window.$message = useMessage();
+    window.$notification = useNotification();
+  };
+
+  const NaiveProviderContent = defineComponent({
+    setup() {
+      registerNaiveTools();
+    },
+    render() {
+      return h('div');
+    },
+  });
+</script>
+
+<style lang="scss" scoped></style>
+```
+
+/src/index.d.ts
+
+```typescript
+// 引入naive对应的定义类型
+import type { DialogApiInjection } from 'naive-ui/lib/dialog/src/DialogProvider';
+import type { MessageApiInjection } from 'naive-ui/lib/message/src/MessageProvider';
+import type { LoadingBarApiInjection } from 'naive-ui/lib/loading-bar/src/LoadingBarProvider';
+import type { NotificationApiInjection } from 'naive-ui/lib/notification/src/NotificationProvider';
+
+declare global {
+  interface Window {
+    $message: MessageApiInjection;
+    $dialog: DialogApiInjection;
+    $loading: LoadingBarApiInjection;
+    $notification: NotificationApiInjection;
+  }
+}
+```
+
+注册组件：/src/App.vue
+
+```vue
+<template>
+  <naive-provider>
+    <app-icon icon="flat-color-icons:search" />
+  </naive-provider>
+</template>
+
+<script setup lang="ts">
+  import AppIcon from '@/components/common/AppIcon.vue';
+  import NaiveProvider from '@/components/common/Provider.vue';
 </script>
 
 <style lang="scss"></style>

@@ -8,6 +8,11 @@ declare module '@vue/runtime-core' {
     AppIcon: typeof import('./src/components/common/AppIcon.vue')['default']
     NaiveProvider: typeof import('./src/components/common/NaiveProvider.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
+    NDialogProvider: typeof import('naive-ui')['NDialogProvider']
+    NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider']
+    NMessageProvider: typeof import('naive-ui')['NMessageProvider']
+    NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
+    Provider: typeof import('./src/components/common/Provider.vue')['default']
   }
 }
 
