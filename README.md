@@ -564,3 +564,48 @@ const app = createApp(App);
 app.use(router).use(pinia);
 app.mount('#app');
 ```
+
+### 2.9 全局配置
+
+新建全局配置文件：.env
+
+```
+VITE_API_URL=http://localhost:3000
+```
+
+解析配置：./src/env.d.ts
+
+```typescript
+/// <reference types="vite/client" />
+
+declare module '*.vue ' {
+  import type { DefineComponent } from 'vue';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
+}
+
+interface ImportMetaEnv extends Readonly<Record<string, string | boolean | undefined>> {
+  readonly VITE_API_URL: string;
+  // more env variables...
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+```
+
+使用配置：./src/App.vue
+
+```vue
+<template>
+  <n-button type="primary" dashed>OHI</n-button>
+</template>
+
+<script setup lang="ts">
+  console.log(import.meta.env.VITE_API_URL);
+</script>
+
+<style lang="scss"></style>
+```
+
