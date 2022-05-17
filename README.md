@@ -723,3 +723,5 @@ declare global {
 <style lang="scss"></style>
 ```
 
+### 2.12 状态管理
+

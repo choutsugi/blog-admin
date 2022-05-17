@@ -5,5 +5,10 @@ import '@/styles/index.scss';
 import 'vfonts/Lato.css';
 import 'vfonts/FiraCode.css';
 import '@purge-icons/generated';
+import { setupStore } from '@/store';
 
-createApp(App).mount('#app');
+const app = createApp(App);
+
+setupStore(app);
+
+app.mount('#app');
