@@ -501,3 +501,66 @@ app.use(pinia);
 app.mount('#app');
 ```
 
+### 2.8 Iconify
+
+地址：https://icon-sets.iconify.design/
+
+安装：
+
+```bash
+yarn add @iconify/iconify
+yarn add vite-plugin-purge-icons @iconify/json -D
+```
+
+按需引入：vite.config.ts
+
+```typescript
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import * as path from 'path';
+import Components from 'unplugin-vue-components/vite';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import PurgeIcons from 'vite-plugin-purge-icons';
+
+const resolve = (p: string) => {
+  return path.resolve(__dirname, p);
+};
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  resolve: {
+    alias: {
+      '@': resolve('./src'),
+    },
+  },
+  plugins: [
+    vue(),
+    Components({
+      resolvers: [NaiveUiResolver()],
+    }),
+    PurgeIcons({
+      content: ['**/*.html', '**/*.js', '**/*.vue'],
+    }),
+  ],
+});
+```
+
+注册：main.ts
+
+```typescript
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import { createPinia } from 'pinia';
+
+import '@/assets/styles/app.scss';
+import 'vfonts/Lato.css';
+import 'vfonts/FiraCode.css';
+import '@purge-icons/generated';
+
+const pinia = createPinia();
+const app = createApp(App);
+
+app.use(router).use(pinia);
+app.mount('#app');
+```
