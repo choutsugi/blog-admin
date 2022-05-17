@@ -24,9 +24,7 @@ yarn dev
 
 ### 2.1 代码约束
 
-#### Eslint+Prettier
-
-安装依赖：
+安装依赖：Eslint+Prettier
 
 ```bash
 yarn add prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue vue-eslint-parser @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
@@ -330,7 +328,7 @@ export default defineConfig({
 
 ### 2.4 原子样式
 
-#### unocss
+#### 2.4.1 unocss
 
 安装依赖：
 
@@ -382,7 +380,7 @@ import 'uno.css';
 createApp(App).mount('#app');
 ```
 
-#### tailwindcss
+#### 2.4.2 tailwindcss
 
 文档：https://tailwindcss.com/docs/guides/vite
 
@@ -435,5 +433,71 @@ import 'uno.css';
 createApp(App).mount('#app');
 ```
 
-### 
+### 2.5 Naive UI
+
+#### 安装
+
+```bash
+yarn add naive-ui -D
+yarn add vfonts -D
+```
+
+#### 按需引入
+
+安装插件：
+
+```bash
+yarn add unplugin-vue-components
+```
+
+配置：/src/vite.config.ts
+
+```typescript
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import * as path from 'path';
+import Components from 'unplugin-vue-components/vite';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+
+const resolve = (p: string) => {
+  return path.resolve(__dirname, p);
+};
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  resolve: {
+    alias: {
+      '@': resolve('./src'),
+    },
+  },
+  plugins: [
+    vue(),
+    Components({
+      resolvers: [NaiveUiResolver()],
+    }),
+  ],
+});
+```
+
+#### 配置字体
+
+/src/main.ts
+
+```typescript
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import { createPinia } from 'pinia';
+
+import '@/assets/styles/app.scss';
+import 'vfonts/Lato.css';
+import 'vfonts/FiraCode.css';
+
+const pinia = createPinia();
+const app = createApp(App);
+
+app.use(router);
+app.use(pinia);
+app.mount('#app');
+```
 

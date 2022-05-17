@@ -1,7 +1,7 @@
-<script setup lang="ts"></script>
-
 <template>
-  <div>玛卡巴卡</div>
+  <n-button type="primary" dashed>Primary</n-button>
 </template>
+
+<script setup lang="ts"></script>
 
 <style lang="scss"></style>
