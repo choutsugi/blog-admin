@@ -1,12 +1,8 @@
 <template>
-  <provider>
-    <icon icon="flat-color-icons:search" />
-  </provider>
+  <!-- 路由的渲染出口 -->
+  <router-view />
 </template>
 
-<script setup lang="ts">
-  import Icon from '@/components/common/Icon.vue';
-  import Provider from '@/components/common/Provider.vue';
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss"></style>

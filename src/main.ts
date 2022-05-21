@@ -1,14 +1,15 @@
-import { createApp } from 'vue';
-import App from '@/App.vue';
+import { createApp } from "vue";
+import App from "@/App.vue";
 
-import '@/styles/index.scss';
-import 'vfonts/Lato.css';
-import 'vfonts/FiraCode.css';
-import '@purge-icons/generated';
-import { setupStore } from '@/store';
+import "@/styles/index.scss";
+import router from "@/router";
+import store from "@/store";
+import "vfonts/Lato.css";
+import "vfonts/FiraCode.css";
+import "@purge-icons/generated";
 
 const app = createApp(App);
 
-setupStore(app);
-
-app.mount('#app');
+app.use(router);
+app.use(store);
+app.mount("#app");

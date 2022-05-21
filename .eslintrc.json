@@ -29,7 +29,8 @@
   "ignorePatterns": [
     "types/env.d.ts",
     "node_modules/**",
-    "**/dist/**"
+    "**/dist/**",
+    "components.d.ts"
   ],
   "rules": {
     "@typescript-eslint/no-unused-vars": "error",
@@ -115,7 +116,9 @@
     "no-mixed-spaces-and-tabs": "warn",
     // 禁止出现多行空行
     "no-multiple-empty-lines": "warn",
-
-    "semi": ["error", "always"]
+    "semi": [
+      "error",
+      "always"
+    ]
   }
 }
