@@ -3,7 +3,7 @@
 // Read more: https://github.com/vuejs/vue-next/pull/3399
 import "@vue/runtime-core";
 
-declare module '@vue/runtime-core' {
+declare module "@vue/runtime-core" {
   export interface GlobalComponents {
     Icon: typeof import("./src/components/common/Icon.vue")["default"];
     NDialogProvider: typeof import("naive-ui")["NDialogProvider"];
@@ -16,4 +16,4 @@ declare module '@vue/runtime-core' {
   }
 }
 
-export {}
+export {};
