@@ -120,5 +120,15 @@
       "error",
       "always"
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "src/api/**/*.ts"
+      ],
+      "rules": {
+        "camelcase": "off"
+      }
+    }
+  ]
 }
