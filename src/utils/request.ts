@@ -3,7 +3,7 @@ import axios from 'axios';
 
 //创建实例
 const request = axios.create({
-  baseURL: '.',
+  baseURL: import.meta.env.VITE_API_BASEURL,
   timeout: 5000,
 });
 

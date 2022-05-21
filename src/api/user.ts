@@ -15,6 +15,6 @@ import type { ILoginResponse } from '@/api/types/user';
 export const getUserInfo = () => {
   return request<ILoginResponse>({
     method: 'GET',
-    url: '/login/info',
+    url: '/admin/login/info', // 通过代理请求
   });
 };
