@@ -4,15 +4,15 @@
 </template>
 
 <script lang="ts" setup>
-import { storeToRefs } from "pinia";
-import useCountStore from "@/store/modules/useCountStore";
+  import { storeToRefs } from 'pinia';
+  import useCountStore from '@/store/modules/useCountStore';
 
-const countStore = useCountStore();
-const refCount = storeToRefs(countStore);
+  const countStore = useCountStore();
+  const refCount = storeToRefs(countStore);
 </script>
 
 <style lang="scss" scoped>
-h1 {
-  color: $color;
-}
+  h1 {
+    color: $color;
+  }
 </style>
