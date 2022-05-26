@@ -1,10 +1,12 @@
 <template>
-  <el-config-provider :z-index="3000">
+  <naive-provider>
     <router-view />
-  </el-config-provider>
+  </naive-provider>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import NaiveProvider from "@/components/NaiveProvider/index.vue";
+</script>
 
 <style lang="less">
 @import "styles/index.less";

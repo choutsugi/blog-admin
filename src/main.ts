@@ -1,11 +1,16 @@
-import "@/styles/tailwind.css";
+import "uno.css";
+import "vfonts/Lato.css";
+import "vfonts/FiraCode.css";
 
 import { createApp } from "vue";
+import { setupRouter } from "@/router";
+import { setupStore } from "@/store";
+
 import App from "./App.vue";
-import router from "@/router";
-import { store } from "@/store";
 
 const app = createApp(App);
-app.use(store);
-app.use(router);
+
+setupStore(app);
+setupRouter(app);
+
 app.mount("#app");
