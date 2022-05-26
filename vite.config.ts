@@ -1,10 +1,9 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import * as path from 'path';
-import AutoImport from 'unplugin-auto-import/vite';
-import Components from 'unplugin-vue-components/vite';
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import * as path from "path";
+import Components from "unplugin-vue-components/vite";
+import AutoImport from "unplugin-auto-import/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -18,25 +17,25 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
   css: {
     preprocessorOptions: {
-      scss: {
-        additionalData: '@import "@/styles/variables.scss";',
+      less: {
+        modifyVars: {},
+        javascriptEnabled: true,
+        additionalData: `@import "@/styles/var.less";`,
       },
     },
   },
   // server: {
+  //   https: false,
   //   proxy: {
-  //     '/admin': {
-  //       // 例如：/admin/login => http://itsukirt.com/api/admin/login
-  //       //代理的目标地址
-  //       target: 'https://itsukirt.com/api',
+  //     "/api": {
+  //       target: "https://lianghj.top:8888/api/private/v1/",
   //       changeOrigin: true,
-  //       //路径重写：删除多余的api
-  //       // rewrite: (path) => path.replace(/^\/api/, ''),
+  //       rewrite: (path) => path.replace(/^\/api/, "/api/v1"),
   //     },
   //   },
   // },

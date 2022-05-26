@@ -7,15 +7,17 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
-    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
-    Icon: typeof import("./src/components/common/Icon.vue")["default"];
-    NDialogProvider: typeof import("naive-ui")["NDialogProvider"];
-    NLoadingBarProvider: typeof import("naive-ui")["NLoadingBarProvider"];
-    NMessageProvider: typeof import("naive-ui")["NMessageProvider"];
-    NNotificationProvider: typeof import("naive-ui")["NNotificationProvider"];
-    Provider: typeof import("./src/components/common/Provider.vue")["default"];
+    ElForm: typeof import('element-plus/es')['ElForm']
+    ElFormItem: typeof import('element-plus/es')['ElFormItem']
+    ElGi: typeof import('element-plus/es')['ElGi']
+    ElGrid: typeof import('element-plus/es')['ElGrid']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElInput: typeof import('element-plus/es')['ElInput']
+    ElRow: typeof import('element-plus/es')['ElRow']
+    NaiveProvider: typeof import('./src/components/NaiveProvider/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
   }
 }
 

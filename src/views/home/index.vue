@@ -1,25 +1,17 @@
 <template>
-  <h1>首页</h1>
-  <el-button type="primary">Primary</el-button>
-  <button @click="countStore.increment">INC: {{ refCount.num }}</button>
-  <div class="block">
-    <el-date-picker v-model="value" placeholder="Pick a day" type="date" />
-  </div>
+  <h1 class="text-2xl text-emerald-600 font-bold">主页</h1>
+  <el-button class="justify-center" @click="handleClick">Click!</el-button>
 </template>
 
-<script lang="ts" setup>
-  import { ref } from 'vue';
-  import { storeToRefs } from 'pinia';
-  import useCountStore from '@/store/modules/useCountStore';
+<script setup lang="ts">
+import Request from "@/service";
 
-  const countStore = useCountStore();
-  const refCount = storeToRefs(countStore);
-
-  const value = ref('');
+const handleClick = () => {
+  Request.request({
+    url: "/home/hasaki",
+    method: "GET",
+  });
+};
 </script>
 
-<style lang="scss" scoped>
-  h1 {
-    color: $color;
-  }
-</style>
+<style scoped></style>
