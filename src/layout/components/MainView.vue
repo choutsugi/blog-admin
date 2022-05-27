@@ -27,14 +27,17 @@ const keepAliveComponents = computed(() => []);
 .zoom-fade-leave-active {
   transition: transform 0.2s, opacity 0.3s ease-out;
 }
+
 .zoom-fade-enter-from {
   opacity: 0;
   transform: scale(0.92);
 }
+
 .zoom-fade-leave-to {
   opacity: 0;
   transform: scale(1.06);
 }
+
 .layout-content-main-fix {
   margin: 15px;
 }

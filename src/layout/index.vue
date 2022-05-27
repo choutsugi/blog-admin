@@ -1,7 +1,16 @@
 <template>
   <n-layout has-sider position="absolute">
-    <n-layout-sider :collapsed-width="68" :width="220" collapse-mode="width" inverted show-trigger>
-      <PageSideBar />
+    <n-layout-sider
+      inverted
+      :width="220"
+      collapse-mode="width"
+      :collapsed-width="68"
+      show-trigger
+      :collapsed="collapsed"
+      @collapse="collapsed = true"
+      @expand="collapsed = false"
+    >
+      <PageSideBar :collapsed="collapsed" />
     </n-layout-sider>
     <n-layout class="h-full">
       <n-layout-header>头部</n-layout-header>
@@ -15,6 +24,9 @@
 <script lang="ts" setup>
 import PageMainView from "@/layout/components/MainView.vue";
 import PageSideBar from "@/layout/components/Sidebar/index.vue";
+import { ref } from "vue";
+
+const collapsed = ref<boolean>(false);
 </script>
 
 <style scoped>

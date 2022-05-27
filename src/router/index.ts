@@ -1,14 +1,13 @@
+import type { RouteRecordRaw } from "vue-router";
 import { createRouter, createWebHashHistory } from "vue-router";
 import type { App } from "vue";
 import { createRouterGuards } from "@/router/guards";
 import Layout from "@/layout/index.vue";
-import type { IRouteRecord } from "@/types/route";
 
-export const routes: IRouteRecord[] = [
+export const routes: RouteRecordRaw[] = [
   {
     path: "/login",
     component: () => import("@/views/login/index.vue"),
-    hidden: true,
   },
   {
     path: "/",
@@ -16,7 +15,7 @@ export const routes: IRouteRecord[] = [
     redirect: "/dashboard",
     children: [
       {
-        path: "dashboard",
+        path: "/dashboard",
         component: () => import("@/views/dashboard/index.vue"),
         meta: { title: "控制台" },
       },
@@ -47,6 +46,17 @@ export const routes: IRouteRecord[] = [
       {
         path: "",
         component: () => import("@/views/category/index.vue"),
+      },
+    ],
+  },
+  {
+    path: "/tag",
+    component: Layout,
+    meta: { title: "标签管理" },
+    children: [
+      {
+        path: "",
+        component: () => import("@/views/tag/index.vue"),
       },
     ],
   },

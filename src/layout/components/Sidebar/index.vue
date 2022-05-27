@@ -1,23 +1,22 @@
 <template>
   <n-menu
-    :collapsed="collapsed"
-    :collapsed-icon-size="20"
-    :collapsed-width="68"
-    :indent="24"
-    :options="menuOptions"
-    :value="activeKey"
-    accordion
     inverted
+    :collapsed="collapsed"
+    :options="menus"
+    :collapsed-width="68"
+    :collapsed-icon-size="20"
+    :indent="24"
+    :value="activeKey"
     @update:value="handleUpdateValue"
   />
 </template>
 
 <script lang="ts" setup>
 import { useRoute, useRouter } from "vue-router";
-import { ref } from "vue";
-import { renderIcon } from "@/utils/icon";
+import { ref, watch } from "vue";
 import type { MenuOption } from "naive-ui";
-import { BagOutline as BagOutlineIcon, FishOutline as FishIcon, PawOutline as PawIcon } from "@vicons/ionicons5";
+import { renderIcon } from "@/utils/icon";
+import { Bookshelf, CategoryManagement, Dashboard, TagOne } from "@icon-park/vue-next";
 
 defineProps({
   collapsed: {
@@ -27,62 +26,51 @@ defineProps({
 
 const router = useRouter();
 const currentRoute = useRoute(); // 当前路由
-const activeKey = ref(currentRoute.name);
+const activeKey = ref(currentRoute.fullPath);
+
+watch(
+  () => currentRoute.fullPath,
+  () => {
+    activeKey.value = currentRoute.fullPath;
+  }
+);
+
 function handleUpdateValue(key: string) {
-  console.log(key);
-  // 防止闪烁
   activeKey.value = key;
-  router.push({ name: key });
+  router.push(key);
 }
-const menuOptions: MenuOption[] = [
+
+const menus: MenuOption[] = [
   {
-    label: "鱼",
-    key: "fish",
-    icon: renderIcon(FishIcon),
+    label: "控制台",
+    key: "/dashboard",
+    icon: renderIcon(Dashboard),
+  },
+  {
+    label: "文章管理",
+    key: "/article",
+    icon: renderIcon(Bookshelf),
+
     children: [
       {
-        label: "红烧",
-        key: "braise",
-        children: [
-          {
-            label: "加辣",
-            key: "spicy",
-          },
-        ],
+        label: "文章列表",
+        key: "/article/list",
       },
       {
-        label: "清蒸",
-        key: "steamed",
-        children: [
-          {
-            label: "不要葱",
-            key: "no-green-onion",
-          },
-        ],
+        label: "发布文章",
+        key: "/article/post",
       },
     ],
   },
   {
-    label: "熊掌",
-    key: "bear-paw",
-    icon: renderIcon(PawIcon),
-    children: [
-      {
-        label: "保护野生动物",
-        key: "protect-wild-animals",
-      },
-    ],
+    label: "分类管理",
+    key: "/category",
+    icon: renderIcon(CategoryManagement),
   },
   {
-    label: "两个都要",
-    key: "both",
-    icon: renderIcon(BagOutlineIcon),
-    children: [
-      {
-        label: "鱼和熊掌不可兼得",
-        key: "can-not",
-      },
-    ],
+    label: "标签管理",
+    key: "/tag",
+    icon: renderIcon(TagOne),
   },
 ];
 </script>
