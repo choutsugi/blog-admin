@@ -1,13 +1,15 @@
 <template>
-  <naive-provider>
-    <router-view />
-  </naive-provider>
+  <n-config-provider>
+    <naive-provider>
+      <router-view />
+    </naive-provider>
+  </n-config-provider>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import NaiveProvider from "@/components/NaiveProvider/index.vue";
 </script>
 
 <style lang="less">
-@import "styles/index.less";
+//@import "styles/index.less";
 </style>
