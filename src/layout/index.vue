@@ -1,16 +1,16 @@
 <template>
   <n-layout has-sider position="absolute">
     <n-layout-sider
-      inverted
+      :collapsed="appStore.collapsed"
+      :collapsed-width="68"
       :width="220"
       collapse-mode="width"
-      :collapsed-width="68"
+      inverted
       show-trigger
-      :collapsed="collapsed"
-      @collapse="collapsed = true"
-      @expand="collapsed = false"
+      @collapse="appStore.setCollapsed(true)"
+      @expand="appStore.setCollapsed(false)"
     >
-      <PageSideBar :collapsed="collapsed" />
+      <PageSideBar />
     </n-layout-sider>
     <n-layout class="h-full">
       <n-layout-header>头部</n-layout-header>
@@ -24,9 +24,9 @@
 <script lang="ts" setup>
 import PageMainView from "@/layout/components/MainView.vue";
 import PageSideBar from "@/layout/components/Sidebar/index.vue";
-import { ref } from "vue";
+import { useAppStore } from "@/store/modules/app";
 
-const collapsed = ref<boolean>(false);
+const appStore = useAppStore();
 </script>
 
 <style scoped>

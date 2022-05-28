@@ -1,28 +1,25 @@
 <template>
   <n-menu
-    inverted
-    :collapsed="collapsed"
-    :options="menus"
-    :collapsed-width="68"
+    :collapsed="appStore.collapsed"
     :collapsed-icon-size="20"
+    :collapsed-width="68"
     :indent="24"
+    :options="menus"
     :value="activeKey"
+    inverted
     @update:value="handleUpdateValue"
   />
 </template>
 
 <script lang="ts" setup>
+import { useAppStore } from "@/store/modules/app";
 import { useRoute, useRouter } from "vue-router";
 import { ref, watch } from "vue";
 import type { MenuOption } from "naive-ui";
 import { renderIcon } from "@/utils/icon";
 import { Bookshelf, CategoryManagement, Dashboard, TagOne } from "@icon-park/vue-next";
 
-defineProps({
-  collapsed: {
-    type: Boolean,
-  },
-});
+const appStore = useAppStore();
 
 const router = useRouter();
 const currentRoute = useRoute(); // 当前路由
