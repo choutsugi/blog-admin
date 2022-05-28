@@ -5,6 +5,7 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Markdown: typeof import('./src/components/Markdown/index.vue')['default']
     NaiveProvider: typeof import('./src/components/NaiveProvider/index.vue')['default']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
