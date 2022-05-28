@@ -13,7 +13,7 @@ export const useAuthStore = defineStore("auth", {
     },
     removeToken() {
       this.token = "";
-      localStorage.removeItem("token");
+      localStorage.removeItem("Access-Token");
     },
   },
 });

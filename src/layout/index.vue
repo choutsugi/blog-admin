@@ -13,7 +13,9 @@
       <PageSideBar />
     </n-layout-sider>
     <n-layout class="h-full">
-      <n-layout-header>头部</n-layout-header>
+      <n-layout-header>
+        <PageHeader />
+      </n-layout-header>
       <n-layout-content :native-scrollbar="false" position="absolute">
         <PageMainView />
       </n-layout-content>
@@ -24,6 +26,7 @@
 <script lang="ts" setup>
 import PageMainView from "@/layout/components/MainView.vue";
 import PageSideBar from "@/layout/components/Sidebar/index.vue";
+import PageHeader from "@/layout/components/Header/index.vue";
 import { useAppStore } from "@/store/modules/app";
 
 const appStore = useAppStore();
