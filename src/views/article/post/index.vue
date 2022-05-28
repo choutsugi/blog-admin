@@ -1,23 +1,25 @@
 <template>
   <div>
     <n-space vertical>
-      <n-grid class="flex items-center">
-        <n-gi span="18">
-          <n-input v-model:value="article.title" class="w-screen" placeholder="输入文章标题" size="large" type="text" />
-        </n-gi>
-        <n-gi class="ml-3" span="1">
-          <n-button :disabled="disablePublish" type="primary" @click="publicClick"> 发布 </n-button>
-        </n-gi>
-      </n-grid>
+      <div class="flex flex-row justify-between items-center h-full">
+        <n-input
+          v-model:value="article.title"
+          class="flex flex-grow h-9 w-screen"
+          placeholder="输入文章标题"
+          size="large"
+          type="text"
+        />
+        <n-button class="ml-4 h-9" :disabled="disablePublish" type="primary" @click="publicClick"> 发布 </n-button>
+      </div>
 
       <!--markdown-->
       <Markdown v-model:text="article.content" />
 
       <!--发布NDrawer-->
-      <n-drawer v-model:show="show" placement="right" width="45%">
+      <n-drawer v-model:show="show" close-on-esc placement="right" width="45%">
         <n-drawer-content title="发布文章">
           <n-form :model="article" class="mt-5" label-placement="left">
-            <n-grid :cols="2" :x-gap="30">
+            <n-grid :cols="1" :x-gap="30">
               <!--              <n-form-item-gi label="文章封面">-->
               <!--                <n-upload v-model:file-url="article.firstPicture">-->
               <!--                  <n-icon size="30">-->
@@ -34,6 +36,7 @@
                   minlength="30"
                   show-count
                   type="textarea"
+                  placeholder="请输入摘要"
                 />
               </n-form-item-gi>
               <n-form-item-gi :span="2" label="添加分类">
@@ -42,10 +45,10 @@
               <n-form-item-gi :span="2" label="添加标签">
                 <n-select v-model:value="article.tags" :options="tagsOption" multiple placeholder="请选择标签" />
               </n-form-item-gi>
-              <n-form-item-gi label="置顶">
+              <n-form-item-gi label="是否置顶">
                 <n-switch v-model:value="article.isTop" />
               </n-form-item-gi>
-              <n-form-item-gi label="评论">
+              <n-form-item-gi label="允许评论">
                 <n-switch v-model:value="article.allowComment" />
               </n-form-item-gi>
             </n-grid>
